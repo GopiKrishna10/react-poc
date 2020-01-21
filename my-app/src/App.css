@@ -1,0 +1,26 @@
+
+.div-list{
+ 
+   background-color: #282c34;
+  color: white;
+}
+.list-text{
+  color:white;
+}
+ul{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 5vh; 
+  
+}
+ul > li > a{
+  color:white
+}
+.component-block{
+      margin-left: 40px;
+}
+.is-danger{
+  color:red;  
+}
