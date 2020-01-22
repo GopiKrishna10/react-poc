@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
 
 const useLoginForm = (callback, validate) => {
-    const history = useHistory();
 
     const [values, setValues] = useState({});
     const [errors, setErrors] = useState({});
@@ -11,7 +9,6 @@ const useLoginForm = (callback, validate) => {
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
             callback();
-            history.push('/redux');
         }
     }, [errors]);
 

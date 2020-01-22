@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -10,7 +9,22 @@ import {
 import FormsComponent from './Forms/FormsComponent';
 import ReduxComponent from './Redux/ReduxComponent';
 import HooksComponent from './Hooks/HooksComponent';
+import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+import { createStore, applyMiddleware } from 'redux';
+import { logger } from 'redux-logger';
+import reducer from './Redux/reducer';
+import rootSaga from './Redux/sagas';
+
 function App() {
+
+  const sagaMiddleware = createSagaMiddleware();
+  const store = createStore(
+    reducer,
+    applyMiddleware(sagaMiddleware, logger),
+  );
+  sagaMiddleware.run(rootSaga);
+
   return (
     <div className="App">
       <header>
@@ -27,7 +41,9 @@ function App() {
               <FormsComponent />
             </Route>
             <Route path="/redux">
-              <ReduxComponent />
+              <Provider store={store}>
+                <ReduxComponent />
+              </Provider>
             </Route>
             <Route path="/hooks">
               <HooksComponent />

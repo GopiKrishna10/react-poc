@@ -1,8 +1,10 @@
 import React from 'react';
 import useLoginForm from "./userForm";
 import validate from './LoginFormValidation';
+import { useHistory } from "react-router-dom";
 
 const FormsComponent = () => {
+    const history = useHistory();
     const {
         values,
         errors,
@@ -11,7 +13,7 @@ const FormsComponent = () => {
 
     } = useLoginForm(login, validate);
     function login() {
-
+        history.push('/redux');
     }
 
     return (
@@ -35,7 +37,7 @@ const FormsComponent = () => {
                         <p className=" is-danger">{errors.password}</p>
                     )}
                 </div>
-               <button type="submit" >Login</button>
+                <button type="submit" >Login</button>
                 {/*<button onClick={}>With Redux</button>
                 <button onClick={}>With Hooks</button>*/}
             </form>
