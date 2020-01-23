@@ -9,14 +9,17 @@ let ReduxComponent = (props) => {
     function callData() {
         props.getData();
     }
-
+    // function deleteArticle(article){
+    //       const filteredItems = content.list.filter(item => item.title !== article.title)
+    //     dispatch({ type: 'SET_LIST', list: filteredItems });
+    // }
     return (
         <Fragment>
             <div style={btnBlock}>
                 <button style={btnStyles} onClick={callData}>Get Data By Redux</button>
             </div>
             <div>
-                <DisplayData />
+                <DisplayData/>
                 <Loading />
             </div>
         </Fragment>

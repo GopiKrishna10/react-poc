@@ -31,7 +31,7 @@ function App() {
       <header>
         <Router>
           <div className="div-list">
-            <ul>
+            <ul className="top-header">
               <li ><Link to="/">Forms</Link></li>
               <li><Link to="/redux">Redux</Link> </li>
               <li><Link to="/hooks">Hooks</Link> </li>

@@ -4,6 +4,8 @@ const reducer = (state = {}, action) => {
             return { ...state, loading: true };
         case 'NEWS_RECEIVED':
             return { ...state, news: action.data, loading: false }
+        case 'UPADTE_LIST':
+            return { ...state, news: action.data, loading: false }
         default:
             return state;
     }

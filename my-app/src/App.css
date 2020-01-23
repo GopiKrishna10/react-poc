@@ -7,13 +7,19 @@
 .list-text{
   color:white;
 }
-ul{
+/*ul{
   list-style-type: none;
-  display: flex;
   align-items: center;
   justify-content: space-around;
   min-height: 5vh; 
   
+}*/
+.top-header{
+   list-style-type: none;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  min-height: 5vh; 
 }
 ul > li > a{
   color:white
