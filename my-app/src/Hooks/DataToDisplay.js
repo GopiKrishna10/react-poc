@@ -9,16 +9,18 @@ const imgStyle = {
 };
 const DataToDisplayComponent = (props) => {
     const news = React.useContext(UserContext);
-    function deleteArticle() {
-
+    function deleteArticle(article) {
+        props.deleteThing(article);
     }
     const renderData = () => {
         return (<ul>
             {news && news.map(article => {
                 return article.title && <li key={article.title}><div >
                     <h5>{article.title}</h5>
+                    <div>
                     <img style={imgStyle} src={article.urlToImage} alt="" />
-                    <button onClick={deleteArticle}>Delete Atricle</button>
+                    </div>
+                    <button onClick={() => deleteArticle(article)}>Delete Atricle</button>
                 </div></li>
             })}
         </ul>

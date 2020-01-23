@@ -2,25 +2,51 @@ import React, { Fragment, useState } from 'react';
 import { UserProvider } from './contextTypes';
 import DataToDisplayComponent from './DataToDisplay';
 import axios from 'axios';
-
+import { url } from '../sharedContent';
+import { dataReducer, initialData } from './DataReducer';
+const loadingStyles = {
+    textAlign: 'center'
+}
 const HooksComponent = () => {
-    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [content, dispatch] = React.useReducer(dataReducer, initialData);
+
+    function deleteThing(selectedItem) {
+        const filteredItems = content.list.filter(item => item.title !== selectedItem.title)
+        dispatch({ type: 'SET_LIST', list: filteredItems });
+    }
 
     function getData() {
-        axios.get(`https://newsapi.org/v1/articles?source=cnn&apiKey=c39a26d9c12f48dba2a5c00e35684ecc`)
+        setLoading(true);
+        axios.get(url)
             .then(res => {
                 const news = res.data.articles;
-                console.log('========',news);
-                setData(news);
+                if (news.length) {
+                    dispatch({ type: 'SET_LIST', list: news });
+                    setLoading(false);
+                }
             })
     }
+
+    const Loading = () => (
+
+        loading ?
+            <div style={loadingStyles}>
+                <h1>LOADING...</h1>
+            </div> :
+            null
+    );
+    const Button = () => (
+        <div>
+            <button onClick={getData}>get Data By Hooks</button>
+        </div>
+    );
     return (
         <Fragment>
-            <div>
-                <button onClick={getData}>Click to get Data</button>
-            </div>
-            <UserProvider value={data}>
-                <DataToDisplayComponent />
+            <Button />
+            <UserProvider value={content.list}>
+                <DataToDisplayComponent deleteThing={deleteThing} />
+                <Loading />
             </UserProvider>
         </Fragment>
     )
