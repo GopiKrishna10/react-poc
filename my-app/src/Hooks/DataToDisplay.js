@@ -14,8 +14,8 @@ const DataToDisplayComponent = (props) => {
     }
     const renderData = () => {
         return (<ul>
-            {news && news.map(article => {
-                return article.title && <li key={article.title}><div >
+            {news && news.map((article,index) => {
+                return article.title && <li key={article.title + index}><div >
                     <h5>{article.title}</h5>
                     <div>
                     <img style={imgStyle} src={article.urlToImage} alt="" />

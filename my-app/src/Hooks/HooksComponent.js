@@ -4,9 +4,9 @@ import DataToDisplayComponent from './DataToDisplay';
 import axios from 'axios';
 import { url } from '../sharedContent';
 import { dataReducer, initialData } from './DataReducer';
-const loadingStyles = {
-    textAlign: 'center'
-}
+import { btnStyles, btnBlock, loadingStyles } from '../sharedContent'
+
+
 const HooksComponent = () => {
     const [loading, setLoading] = useState(false);
     const [content, dispatch] = React.useReducer(dataReducer, initialData);
@@ -37,8 +37,8 @@ const HooksComponent = () => {
             null
     );
     const Button = () => (
-        <div>
-            <button onClick={getData}>get Data By Hooks</button>
+        <div style={btnBlock}>
+            <button style={btnStyles} onClick={getData}>Get Data By Hooks</button>
         </div>
     );
     return (

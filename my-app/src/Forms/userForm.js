@@ -22,6 +22,7 @@ const useLoginForm = (callback, validate) => {
         event.persist();
         setValues(values => ({ ...values, [event.target.name]: event.target.value }));
         setErrors(validate(values));
+         setIsSubmitting(false);
     };
     return {
         handleChange,

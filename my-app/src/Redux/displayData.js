@@ -1,21 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import {imgStyle} from '../sharedContent';
 
-
-const imgStyle = {
-    hight: '40%',
-    width: '40%',
-    border: '4px solid RebeccaPurple ',
-    borderRadius: '5%'
-};
-
-// const errorMessage = {
-//     color: 'red'
-// }
 const renderData = (articles) => {
     return (<ul>
-        {articles.map(article => {
-            return article.title && <li key={article.title}><div >
+        {articles.map((article, index) => {
+            return article.title && <li key={article.title + index}><div >
                 <h5>{article.title}</h5>
                 <img style={imgStyle} src={article.urlToImage} alt="" />
             </div></li>

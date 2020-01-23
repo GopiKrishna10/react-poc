@@ -12,26 +12,27 @@ import HooksComponent from './Hooks/HooksComponent';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { createStore, applyMiddleware } from 'redux';
-import { logger } from 'redux-logger';
+// import { logger } from 'redux-logger';
 import reducer from './Redux/reducer';
 import rootSaga from './Redux/sagas';
-
+// applyMiddleware(sagaMiddleware, logger),
+// import { useHistory } from "react-router-dom";
 function App() {
-
+  // const history1 = useHistory();
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     reducer,
-    applyMiddleware(sagaMiddleware, logger),
+    applyMiddleware(sagaMiddleware),
   );
   sagaMiddleware.run(rootSaga);
-
+  // const pathName = history1.get  CurrentLocation().pathname
   return (
     <div className="App">
       <header>
         <Router>
           <div className="div-list">
             <ul>
-              <li className="list-text"><Link to="/">Forms</Link></li>
+              <li ><Link to="/">Forms</Link></li>
               <li><Link to="/redux">Redux</Link> </li>
               <li><Link to="/hooks">Hooks</Link> </li>
             </ul>

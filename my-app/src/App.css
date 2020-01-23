@@ -24,3 +24,6 @@ ul > li > a{
 .is-danger{
   color:red;  
 }
+.active{
+  color:red;
+}

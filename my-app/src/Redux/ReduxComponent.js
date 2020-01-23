@@ -3,17 +3,7 @@ import { getData } from './actions';
 import { connect } from 'react-redux';
 import DisplayData from './displayData';
 import Loading from './Loading';
-
-const btnStyles = {
-    border: 'none',
-    height: '35px',
-    width: '115px',
-    cursor:'pointer',
-    borderRadius: '4px'
-}
-const btnBlock = {
-    textAlign: 'center'
-}
+import {btnStyles,btnBlock} from '../sharedContent'
 let ReduxComponent = (props) => {
 
     function callData() {
@@ -23,7 +13,7 @@ let ReduxComponent = (props) => {
     return (
         <Fragment>
             <div style={btnBlock}>
-                <button style={btnStyles} onClick={callData}>Click To See News</button>
+                <button style={btnStyles} onClick={callData}>Get Data By Redux</button>
             </div>
             <div>
                 <DisplayData />
